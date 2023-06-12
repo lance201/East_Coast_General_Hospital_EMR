@@ -8,7 +8,7 @@ Our web-based, database-driven EMR will capture each patient encounter in accura
 The database captures people such as Doctors, Nurses and Patients as entities and they are related to the Rooms they stay in or care for and Departments they belong to. A Patient may be 
 encountered by a Doctor and assisted by multiple Nurses in a Visit in a Room for medical examination, and may be required for additional lab tests and examinations, which is recorded through the Requisition.
 
-The project uses simple handlebars to create static pages for front end UI with data stored and accessed through SQL.
+The project uses simple handlebars to create static pages for front end UI with data stored and accessed through SQL queries.
 
 ## Schema
 
