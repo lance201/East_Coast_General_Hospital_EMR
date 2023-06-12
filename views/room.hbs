@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Room</title>
+  </head>
+  <body>
+    <div class="pill-nav">
+        <a href="/">Home</a>
+        <a href="patient">Patient</a>
+        <a href="visit">Visit</a>
+        <a href="nurse_visit">NurseVisit</a>
+        <a href="nurse">Nurse</a>
+        <a href="doctor">Doctor</a>
+        <a class = "active" href="room">Room</a>
+        <a href="department">Department</a>
+        <a href="requisition">Requisition</a>
+    </div>
+    <div>
+      <h1 class = "header">Room</h1>
+    </div>
+    <div>
+    <table>
+    <caption>Records Room Information</caption>
+      <thead>
+      <tr>
+        <th>room_id</th>
+        <th>floor</th>
+        <th>department_name</th>
+      </tr>
+      </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.room_id}}</td>
+            <td>{{this.floor}}</td>
+            <td>{{this.department_name}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+  </table>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h1 class = "header2"> Add Room</h1>
+    <form action="/room" class = "a_form" method="POST">
+
+      <label for="room">Room_id</label>
+      <div>
+      <input type="text" id="room" name="room_id" placeholder="room_id" required>
+      </div>
+    
+      <label for="floor">Floor</label>
+      <div>
+      <input type="text" id="floor" name="floor" placeholder="floor" required>
+      </div>
+
+      <label for="dept">Department Name</label>
+      <div>
+      <select name="department_name" id="department_name">
+          <option value="">Select a Department</option>
+          {{#each departments}}
+          <option value="{{this.department_name}}">{{this.department_name}}</option>
+          {{/each}}
+      </select>
+      </div>
+
+      <p>
+      <input type="submit" value="Submit">
+      </p>
+    </div>
+  </body>
+</html>

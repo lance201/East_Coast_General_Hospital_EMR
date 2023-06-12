@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Department</title>
+  </head>
+  <body>
+    <div class="pill-nav">
+        <a href="/">Home</a>
+        <a href="patient">Patient</a>
+        <a href="visit">Visit</a>
+        <a href="nurse_visit">NurseVisit</a>
+        <a href="nurse">Nurse</a>
+        <a href="doctor">Doctor</a>
+        <a href="room">Room</a>
+        <a class = "active" href="department">Department</a>
+        <a href="requisition">Requisition</a>
+    </div>
+    <div>
+      <h1 class = "header">Department</h1>
+    </div>
+    <div>
+    <table>
+    <caption>Records Department Information</caption>
+      <thead>
+      <tr>
+        <th>department_name</th>
+        <th>phone_number</th>
+      </tr>
+      </thead>
+      <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.department_name}}</td>
+            <td>{{this.phone_number}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+  </table>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h1 class = "header2"> Add Department</h1>
+    <form action="/department" class = "a_form" method="POST">
+
+      <label for="dept">Department Name</label>
+      <div>
+      <input type="text" id="dept" name="department_name" placeholder="department_name" required>
+      </div>
+
+      <label for="phonenumber">Phone Number</label>
+      <div>
+      <input type="number" id="phonenumber" name="phone_number" placeholder="phone_number" required>
+      </div>
+
+      <p>
+      <input type="submit" value="Submit">
+      </p>
+    </div>
+  </body>
+</html>

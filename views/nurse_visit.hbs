@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Nurse_Visit</title>
+  </head>
+  <body>
+    <div class="pill-nav">
+        <a href="/">Home</a>
+        <a  href="patient">Patient</a>
+        <a href="visit">Visit</a>
+        <a class = "active" href="nurse_visit">NurseVisit</a>
+        <a href="nurse">Nurse</a>
+        <a href="doctor">Doctor</a>
+        <a href="room">Room</a>
+        <a href="department">Department</a>
+        <a href="requisition">Requisition</a>
+    </div>
+    <div>
+      <h1 class = "header">Nurse_Visit</h1>
+    </div>
+    <div>
+    <table>
+    <caption>Records Nurse During Each Visit</caption>
+      <thead>
+      <tr>
+        <th>record_id</th>
+        <th>nurse_id</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.record_id}}</td>
+            <td>{{this.nurse_id}}</td>
+            <td><a href="/delete_nursevisit?nurse_id={{this.nurse_id}}&record_id={{this.record_id}}">Delete</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+  </table>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h1 class = "header2"> Add Nurse_Visit</h1>
+    <form action="/nurse_visit" class = "a_form" method="POST">
+
+      <label for="record_id">Record ID</label>
+      <div>
+      <select name="record_id" id="record_id" required>
+          <option value="">Select a record_id</option>
+          {{#each visits}}
+          <option value="{{this.record_id}}">{{this.record_id}}</option>
+          {{/each}}
+      </select>
+      </div>
+
+      <label for="n_id">Nurse ID</label>
+      <div>
+      <select name="nurse_id" id="nurse_id" required>
+          <option value="">Select a nurse_id</option>
+          {{#each nurses}}
+          <option value="{{this.nurse_id}}">{{this.nurse_id}}</option>
+          {{/each}}
+      </select>
+      </div>
+
+      <p>
+      <input type="submit" value="Submit">
+      </p>
+    </form>
+    </div>
+  </body>
+</html>

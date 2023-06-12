@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Update Patient</title>
+  </head>
+  <body>
+    <div class="pill-nav">
+        <a href="/">Home</a>
+        <a class = "active" href="patient">Patient</a>
+        <a href="visit">Visit</a>
+        <a href="nurse_visit">NurseVisit</a>
+        <a href="nurse">Nurse</a>
+        <a href="doctor">Doctor</a>
+        <a href="room">Room</a>
+        <a href="department">Department</a>
+        <a href="requisition">Requisition</a>
+    </div>
+
+    <div>
+      <h1 class = "header">Patient</h1>
+    </div>
+
+    <div>
+    
+    <h1 class = "header2">Update {{patient.first_name}} {{patient.last_name}}</h1>
+    <form id="update-patient" action="/updated_patient" class = "a_form" method="POST">
+      <input type="hidden" id="patient_id" name="patient_id" value="{{patient.patient_id}}">
+      <label for="lname">Last Name</label>
+      <div>
+      <input type="text" id="lname" name="last_name" value="{{patient.last_name}}" required>
+      </div>
+
+      <label for="fname">First Name</label>
+      <div>
+      <input type="text" id="fname" name="first_name" value="{{patient.first_name}}" required>
+      </div>
+
+      <label for="ss">Social Security</label>
+      <div>
+      <input type="number" id="ss" name="social_security" value="{{patient.social_security}}" required>
+      </div>
+
+      <label for="dob">Date Of Birth</label>
+      <div>
+      <input type="date" id="dob" name="date_of_birth" value="{{moment patient.date_of_birth format='YYYY-MM-DD'}}">
+      </div>
+
+      <label for="address">Address</label>
+      <div>
+      <input type="text" id="address" name="address" value="{{patient.address}}">
+      </div>
+
+      <label for="insurance">Insurance</label>
+      <div>
+      <input type="text" id="insurance" name="insurance" value="{{patient.insurance}}">
+      </div>
+
+      <label for="phonenumber">Phone Number</label>
+      <div>
+      <input type="number" id="phonenumber" name="phone_number" value="{{patient.phone_number}}">
+      </div>
+
+      <label for="primarydoctor">Primary Doctor</label>
+      <div>
+      <input type="text" id="primarydoctor" name="primary_doctor" value="{{patient.primary_doctor}}">
+      </div>
+
+      <p>
+      <button type="submit">Update Patient</button>
+      </p>
+
+    </form>
+    </div>
+  </body>
+</html>

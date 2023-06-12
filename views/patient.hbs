@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Patient</title>
+  </head>
+  <body>
+    <div class="pill-nav">
+        <a href="/">Home</a>
+        <a class = "active" href="patient">Patient</a>
+        <a href="visit">Visit</a>
+        <a href="nurse_visit">NurseVisit</a>
+        <a href="nurse">Nurse</a>
+        <a href="doctor">Doctor</a>
+        <a href="room">Room</a>
+        <a href="department">Department</a>
+        <a href="requisition">Requisition</a>
+    </div>
+    <div>
+      <h1 class = "header">Patient</h1>
+    </div>
+    <div>
+      <table>
+      <caption>Records Patient's Information</caption>
+        <thead>
+        <tr>
+          <th>patient_id</th>
+          <th>last_name</th>
+          <th>first_name</th>
+          <th>social_security</th>
+          <th>date_of_birth</th>
+          <th>address</th>
+          <th>insurance</th>
+          <th>phone_number</th>
+          <th>primary_doctor</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.patient_id}}</td>
+            <td>{{this.last_name}}</td>
+            <td>{{this.first_name}}</td>
+            <td>{{this.social_security}}</td>
+            <td>{{moment this.date_of_birth format='YYYY-MM-DD'}}</td>
+            <td>{{this.address}}</td>
+            <td>{{this.insurance}}</td>
+            <td>{{this.phone_number}}</td>
+            <td>{{this.primary_doctor}}</td>
+            <td><a href="/update_patient?patient_id={{this.patient_id}}">Update</a></td>
+            <td><a href="/delete_patient?patient_id={{this.patient_id}}">Delete</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+      </table>
+    </div>
+    <br>
+    <br>
+    <div>
+    <h1 class = "header2"> Add Patient</h1>
+    <form action="/patient" class = "a_form" method="POST">
+
+      
+      <label for="lname">Last Name</label>
+      <div>
+      <input type="text" id="lname" name="last_name" placeholder="last_name" required>
+      </div>
+
+      <label for="fname">First Name</label>
+      <div>
+      <input type="text" id="fname" name="first_name" placeholder="first_name" required>
+      </div>
+
+      <label for="ss">Social Security</label>
+      <div>
+      <input type="number" id="ss" name="social_security" placeholder="social_security" required>
+      </div>
+
+      <label for="dob">Date Of Birth</label>
+      <div>
+      <input type="date" id="dob" name="date_of_birth" placeholder="date_of_birth">
+      </div>
+
+      <label for="address">Address</label>
+      <div>
+      <input type="text" id="address" name="address" placeholder="address">
+      </div>
+
+      <label for="insurance">Insurance</label>
+      <div>
+      <input type="text" id="insurance" name="insurance" placeholder="insurance">
+      </div>
+
+      <label for="phonenumber">Phone Number</label>
+      <div>
+      <input type="number" id="phonenumber" name="phone_number" placeholder="phone_number">
+      </div>
+
+      <label for="primarydoctor">Primary Doctor</label>
+      <div>
+      <input type="text" id="primarydoctor" name="primary_doctor" placeholder="primary_doctor">
+      </div>
+
+      <p>
+      <input type="submit" value="Submit">
+      </p>
+    </form>
+    </div>
+  </body>
+</html>

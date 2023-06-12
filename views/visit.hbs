@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Visit</title>
+  </head>
+  <body>
+    <div class="pill-nav">
+        <a href="/">Home</a>
+        <a href="patient">Patient</a>
+        <a class = "active" href="visit">Visit</a>
+        <a href="nurse_visit">NurseVisit</a>
+        <a href="nurse">Nurse</a>
+        <a href="doctor">Doctor</a>
+        <a href="room">Room</a>
+        <a href="department">Department</a>
+        <a href="requisition">Requisition</a>
+    </div>
+    <div>
+    <h1 class = "header">Visit</h1>
+    </div>
+    <div>
+    <table>
+    <caption>Records Patient's Encounter</caption>
+      <thead>
+      <tr>
+        <th>record_id</th>
+        <th>patient_id</th>
+        <th>doctor_id</th>
+        <th>room_id</th>
+        <th>requisition_id</th>
+        <th>date</th>
+        <th>height</th>
+        <th>weight</th>
+        <th>vital_sign</th>
+        <th>chief_complaint</th>
+        <th>physical_exam</th>
+        <th>treatment</th>
+        <th>diagnosis</th>
+      </tr>
+      </thead>
+      <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.record_id}}</td>
+            <td>{{this.patient_id}}</td>
+            <td>{{this.doctor_id}}</td>
+            <td>{{this.room_id}}</td>
+            <td>{{this.requisition_id}}</td>
+            <td>{{moment this.date format='YYYY-MM-DD'}}</td>
+            <td>{{this.height}}</td>
+            <td>{{this.weight}}</td>
+            <td>{{this.vital_sign}}</td>
+            <td>{{this.chief_complaint}}</td>
+            <td>{{this.physical_exam}}</td>
+            <td>{{this.treatment}}</td>
+            <td>{{this.diagnosis}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+    </table>
+    </div>
+    <br>
+    <br>
+    <div>
+      <h1 class = "header2"> Search for Visit Records</h1>
+      <form id="search-patient" action="/visit" class = "a_form" method="GET"> 
+      
+        <label for="p_id">Search By Patient Name</label>
+        <div>
+        <select name="patient_name" id="patient_name">
+          <option value="null">Select by First Name</option>
+          {{#each patients}}
+          <option value="{{this.first_name}}">{{this.first_name}}</option>
+          {{/each}}
+        </select>
+        </div>
+  
+        <p>
+        <input type="submit" value="Submit">
+        </p>
+      </form>
+      <a href="visit"><button>Reset</button></a>
+    </div>
+    <div>
+      <h1 class = "header2"> Add Visit</h1>
+      <form action="/visit" class = "a_form" method="POST"> 
+      
+        <label for="p_id">Patient ID</label>
+        <div>
+        <select name="patient_id" id="patient_id" required>
+          <option value="">Select by Patient ID</option>
+          {{#each patientsid}}
+          <option value="{{this.patient_id}}">{{this.patient_id}}</option>
+          {{/each}}
+        </select>
+        </div>
+
+        <label for="d_id">Doctor ID</label>
+        <div>
+        <select name="doctor_id" id="doctor_id" required>
+          <option value="">Select by Doctor ID</option>
+          {{#each doctors}}
+          <option value="{{this.doctor_id}}">{{this.doctor_id}}</option>
+          {{/each}}
+        </select>
+        </div>
+
+        <label for="ro_id">Room ID</label>
+        <div>
+        <select name="room_id" id="room_id" required>
+          <option value="">Select by Room ID</option>
+          {{#each rooms}}
+          <option value="{{this.room_id}}">{{this.room_id}}</option>
+          {{/each}}
+        </select>
+        </div>
+        
+        <label for="req_id">Requisition ID</label>
+        <div>
+        <select name="requisition_id" id="requisition_id">
+          <option value="null">Select by Requisition ID</option>
+          {{#each requisitions}}
+          <option value="{{this.requisition_id}}">{{this.requisition_id}}</option>
+          {{/each}}
+        </select>
+        </div>
+  
+        <label for="date">Date</label>
+        <div>
+        <input type="date" id="dob" name="date" placeholder="date" required>
+        </div>
+  
+        <label for="height">Height</label>
+        <div>
+        <input type="text" id="height" name="height" placeholder="height" required>
+        </div>
+  
+        <label for="weight">Weight</label>
+        <div>
+        <input type="text" id="weight" name="weight" placeholder="weight" required>
+        </div>
+  
+        <label for="vs">Vital Sign</label>
+        <div>
+        <input type="text" id="vs" name="vital_sign" placeholder="vital_sign" required>
+        </div>
+
+        <label for="CC">Chief Complaint</label>
+        <div>
+        <input type="text" id="CC" name="chief_complaint" placeholder="chief_complaint" required>
+        </div>
+
+        <label for="PE">Physical Exam</label>
+        <div>
+        <input type="text" id="PE" name="physical_exam" placeholder="physical_exam" required>
+        </div>
+
+        <label for="TX">Treatment</label>
+        <div>
+        <input type="text" id="TX" name="treatment" placeholder="treatment">
+        </div>
+        
+        <label for="DX">Diagnosis</label>
+        <div>
+        <input type="text" id="DX" name="diagnosis" placeholder="diagnosis">
+        </div>
+  
+        <p>
+        <input type="submit" value="Submit">
+        </p>
+      </form>
+    </div>
+  </body>
+</html>

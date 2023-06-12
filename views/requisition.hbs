@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Requisition</title>
+  </head>
+  <body>
+    <div class="pill-nav">
+        <a href="/">Home</a>
+        <a href="patient">Patient</a>
+        <a href="visit">Visit</a>
+        <a href="nurse_visit">NurseVisit</a>
+        <a href="nurse">Nurse</a>
+        <a href="doctor">Doctor</a>
+        <a href="room">Room</a>
+        <a href="department">Department</a>
+        <a class = "active" href="requisition">Requisition</a>
+    </div>
+    <div>
+      <h1 class = "header">Requisition</h1>
+    </div>
+    <div>
+    <table>
+    <caption>Records Patient Orders</caption>
+      <thead>
+      <tr>
+        <th>requisition_id</th>
+        <th>order</th>
+        <th>result</th>
+      </tr>
+      </thead>
+      <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.requisition_id}}</td>
+            <td>{{this.order_name}}</td>
+            <td>{{this.result}}</td>
+        </tr>
+        {{/each}}
+  </tbody>   
+  </table>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h1 class = "header2"> Add Requisition Order</h1>
+    <form action="/requisition" class = "a_form" method = "POST">
+
+      <label for="order">Order</label>
+      <div>
+      <input type="text" id="order_name" name="order_name" placeholder="order" required>
+      </div>
+
+      <label for="result">Result</label>
+      <div>
+      <input type="text" id="result" name="result" placeholder="result" required>
+      </div>
+
+      <p>
+      <input type="submit" value="Submit">
+      </p>
+    </div>
+  </body>
+</html>

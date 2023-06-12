@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Doctor</title>
+  </head>
+  <body>
+    <div class="pill-nav">
+        <a href="/">Home</a>
+        <a href="patient">Patient</a>
+        <a href="visit">Visit</a>
+        <a href="nurse_visit">NurseVisit</a>
+        <a href="nurse">Nurse</a>
+        <a class = "active" href="doctor">Doctor</a>
+        <a href="room">Room</a>
+        <a href="department">Department</a>
+        <a href="requisition">Requisition</a>
+    </div>
+    <div>
+      <h1 class = "header">Doctor</h1>
+    </div>
+    <div>
+    <table>
+    <caption>Records Doctor's Information</caption>
+      <thead>
+      <tr>
+        <th>doctor_id</th>
+        <th>last_name</th>
+        <th>first_name</th>
+        <th>specialty</th>
+        <th>department_name</th>
+        <th>phone_number</th>
+      </tr>
+      </thead>
+      <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.doctor_id}}</td>
+            <td>{{this.last_name}}</td>
+            <td>{{this.first_name}}</td>
+            <td>{{this.specialty}}</td>
+            <td>{{this.department_name}}</td>
+            <td>{{this.phone_number}}</td>
+        </tr>
+        {{/each}}
+     </tbody>
+    </table>
+    </div>
+    <br>
+    <br>
+    <div>
+      <h1 class = "header2"> Add Doctor</h1>
+      <form action="/doctor" class = "a_form" method="POST">
+      
+        <label for="lname">Last Name</label>
+        <div>
+        <input type="text" id="lname" name="last_name" placeholder="last_name">
+        </div>
+  
+        <label for="fname">First Name</label>
+        <div>
+        <input type="text" id="fname" name="first_name" placeholder="first_name">
+        </div>
+
+        <label for="spec">Specialty</label>
+        <div>
+        <input type="text" id="spec" name="specialty" placeholder="specialty">
+        </div>
+
+        <label for="dept">Department Name</label>
+        <div>
+        <select name="department_name" id="department_name" required>
+          <option value="">Select a Department</option>
+          {{#each departments}}
+          <option value="{{this.department_name}}">{{this.department_name}}</option>
+          {{/each}}
+        </select>
+        </div>
+  
+        <label for="phonenumber">Phone Number</label>
+        <div>
+        <input type="number" id="phonenumber" name="phone_number" placeholder="phone_number">
+        </div>
+  
+        <p>
+        <input type="submit" value="Submit">
+        </p>
+      </div>
+  </body>
+</html>
